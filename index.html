@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Editor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #404565;
+    }
+    img {
+    position: absolute;
+    top: 40px; 
+    left: 450px; 
+  }
+  .white-text {
+    color: white;
+  }
+    .container {
+      text-align: center;
+    }
+    input[type="color"] {
+      margin-top: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+    canvas {
+      width: 1080px;
+      height: 1080px;
+    }
+    .bottom-paragraph {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: #f0f0f0; /* Background color for the bottom half */
+        padding: 20px;
+        box-sizing: border-box;
+        font-family: Georgia, serif; 
+    }
+    
+  </style>
+</head>
+<body>
+    <img src="./unnamed.png" alt="Zocket enables businesses to effortlessly craft and launch ads in seconds.">   
+  <div class="container">
+    <p class="white-text">+</p>
+    <input type="color" id="colorPicker" onchange="changeBackgroundColor()">
+  </div>
+  <canvas id="editorCanvas" width="1080" height="1080"></canvas>
+
+  <script>
+    function changeBackgroundColor() {
+      const color = document.getElementById("colorPicker").value;
+      document.body.style.backgroundColor = color;
+    }
+
+    const canvas = document.getElementById('editorCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Load image mask
+    const maskImg = new Image();
+    maskImg.src = 'https://d273i1jagfl543.cloudfront.net/templates/global_temp_landscape_temp_10_mask.png';
+    maskImg.onload = () => {
+      ctx.drawImage(maskImg, 60, 10, 900, 300);
+    };
+    
+    // Your canvas drawing code here
+    
+  </script>
+  <div class="bottom-paragraph">
+    <h1>Zocket enables businesses to effortlessly craft and launch ads in seconds.</h1>
+    <div>
+      <button>Contact us</button>
+    </div>
+</div>
+</body>
+</html>
